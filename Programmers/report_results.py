@@ -33,12 +33,12 @@ def solution(id_list, report, k):
     # print(type(list_mail[0]))
     # 메일 횟수 count
     for i in range(len(list_mail)):
-        for j in range(len(id_list)):
-            if list_mail[i] == id_list[j]:          # 이용자에게
-                id_mail[j] += 1
+        index = id_list.index(list_mail[i])             # list_mail[i]에 해당하는 index 찾아서
+        id_mail[index] += 1                             # id_mail 1 증가
 
     answer = id_mail
 
     return answer
 
 answer = solution(id_list, report, k)
+print(answer)
