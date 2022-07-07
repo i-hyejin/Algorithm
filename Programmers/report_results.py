@@ -23,12 +23,6 @@ def solution(id_list, report, k):
             report_list[index].append(report_who)       # 신고자 이름 기록
             id_count[index] += 1                        # 신고 횟수 1 누적
 
-        # for j in range(len(id_list)):
-        #     if report_id == id_list[j]:                # 신고 대상 id와 id_list 가 같으면
-        #         if report_who not in report_list[j]:    # 신고자가 최초 신고자면
-        #             report_list[j].append(report_who)   # 신고자 이름 기록
-        #             id_count[j] += 1                    # 신고 횟수 1 누적
-
     # k번 이상으로 신고된 아이디를 신고해서 메일 받아야 하는 사람 반환
     list_mail = []
     for i in range(len(id_list)):
