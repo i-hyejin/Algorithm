@@ -12,10 +12,7 @@ def solution(lottos, win_nums):
     # 정렬 후 0 개수 찾기 & 정답 개수 찾기
     lottos.sort(reverse=False)                      # 구매한 번호 내림차순 정렬
     count_zero = lottos.count(0)                    # 0 개수
-
-    lottos_set = set(lottos)                        # lottos 집합으로 만들어줌
-    win_nums_set = set(win_nums)                    # win_nums 집합으로 만들어줌
-    count_win = len(lottos_set & win_nums_set)      # 정답 개수(교집합 원소의 개수)
+    count_win = len(set(lottos) & set(win_nums))     # 정답 개수(교집합 원소의 개수)
 
     # 최고, 최저 등수 반환
     answer.append(ranking[count_win+count_zero])    # 최고 등수
