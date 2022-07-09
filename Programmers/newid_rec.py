@@ -19,12 +19,10 @@ def solution(new_id):
     # 4단계. 마침표(.) 처음/끝 제거
     answer = answer.strip('.')
 
-    # 5단계. 빈 문자열이면 'a' 대입
-    if answer == '':
-        answer = 'a'
+    # 5단계. 빈 문자열이면 'a' 대입 & 6단계 16자 이상이면 15개 제외 제거
+    answer = 'a' if len(answer) == 0 else answer[:15]
 
     # 6단계. 16자 이상이면 15개 제외 제거
-    answer = answer[:15]
     answer = answer.strip('.')
 
     # 7단계. 2자 이하면 마지막 문자 반복하기
