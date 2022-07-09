@@ -10,7 +10,6 @@ def solution(lottos, win_nums):
     ranking = [6, 6, 5, 4, 3, 2, 1]                 # ranking : 맞춘 개수 별 등수
 
     # 정렬 후 0 개수 찾기 & 정답 개수 찾기
-    lottos.sort(reverse=False)                      # 구매한 번호 내림차순 정렬
     count_zero = lottos.count(0)                    # 0 개수
     count_win = len(set(lottos) & set(win_nums))     # 정답 개수(교집합 원소의 개수)
 
