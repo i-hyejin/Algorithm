@@ -7,34 +7,15 @@ def solution(id_list, report, k):
     # report : 신고한 id 배열
     # k : 기준이 되는 신고 횟수
 
-    answer = []
+    answer = [0] * len(id_list)
+    reports = {x : 0 for x in id_list}                  # 신고 기록 정리
 
-    id_count = [0 for i in range(len(id_list))]         # id_count : 신고 횟수
-    report_list = [[] for i in range(len(id_list))]     # report_list : 누가 신고했는지
-    id_mail = [0 for i in range(len(id_list))]          # id_mail : 결과 메일 횟수
+    for r in set(report):
+        reports[r.split()[1]] += 1                      # 신고자 횟수 1 증가
 
-    # report에서 신고 횟수 누적 & 신고자 기록
-    for i in range(len(report)):
-        report_who = report[i].split(' ')[0]            # report_who : 신고자
-        report_id = report[i].split(' ')[1]             # report_id : 신고 대상 id
-
-        index = id_list.index(report_id)                # report_id를 id_list에서 찾기
-        if report_who not in report_list[index]:        # 신고자가 최초 신고자면
-            report_list[index].append(report_who)       # 신고자 이름 기록
-            id_count[index] += 1                        # 신고 횟수 1 누적
-
-    # k번 이상으로 신고된 아이디를 신고해서 메일 받아야 하는 사람 반환
-    list_mail = []
-    for i in range(len(id_list)):
-        if id_count[i] >= k:                            # k번 이상 신고된 아이디
-            list_mail = list_mail + report_list[i]      # 리스트에 추가
-
-    # 메일 횟수 count
-    for i in range(len(list_mail)):
-        index = id_list.index(list_mail[i])             # list_mail[i]에 해당하는 index 찾아서
-        id_mail[index] += 1                             # id_mail 1 증가
-
-    answer = id_mail
+    for r in set(report):
+        if reports[r.split()[1]] >= k:                  # k번 이상 신고되었으면
+            answer[id_list.index(r.split()[0])] += 1    # 신고자에게 메일 1 증가
 
     return answer
 
